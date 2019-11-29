@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import theme from "@/theme";
 import ActiveLink from "./ActiveLink";
+import Link from "next/link";
+import { LayoutContainer } from "@/containers/Layout";
 
 const StyledLink = styled.a`
   cursor: pointer;
@@ -9,57 +11,45 @@ const StyledLink = styled.a`
   &.active {
     color: ${theme.colors.teal[500]};
   }
-  padding: 0 0.5rem;
-`;
-
-const NavItem = styled.section`
-  display: flex;
-  align-items: center;
-`;
-
-const Spacer = styled.div`
-  flex-grow: 1;
+  font-weight: 500;
+  padding: 0 1rem;
+  text-decoration: none;
 `;
 
 const Logo = styled.h1`
   color: ${theme.colors.gray[800]};
+  font-family: ${theme.fontFamily.title}
+  text-align: center;
+  cursor: pointer;
+  line-height: 2em;
+  font-size: 3em;
 `;
 
-const getNavItems = () => {
-  const links = [
-    {
-      text: "Home",
-      path: "/"
-    },
-    {
-      text: "About",
-      path: "/about"
-    }
-  ];
-  return links.map(item => (
-    <NavItem key={item.text + item.path}>
-      <ActiveLink href={item.path}>
-        <StyledLink>{item.text}</StyledLink>
-      </ActiveLink>
-    </NavItem>
-  ));
-};
-
-const HeaderContainer = styled.header`
-  display: flex;
-  height: 4rem;
-  padding: 0 1rem;
-  box-shadow: ${theme.boxShadow.default};
+const NavContainer = styled.section`
+  text-align: center;
 `;
+
+const HeaderContainer = styled.header``;
 
 const HeaderComponent: React.FunctionComponent = () => {
+  const layout = LayoutContainer.useContainer();
   return (
     <HeaderContainer>
-      <NavItem>
-        <Logo>Hello</Logo>
-      </NavItem>
-      <Spacer></Spacer>
-      {getNavItems()}
+      <Link href="/">
+        <Logo>wsq.cool</Logo>
+      </Link>
+      <NavContainer>
+        <ActiveLink href="/">
+          <StyledLink>Home</StyledLink>
+        </ActiveLink>
+        <ActiveLink href="/author">
+          <StyledLink>Author</StyledLink>
+        </ActiveLink>
+        <StyledLink href="mailto: wsq961@outlook.com">Contact</StyledLink>
+        <StyledLink onClick={() => layout.setSearchPanelVisible(true)}>
+          Search
+        </StyledLink>
+      </NavContainer>
     </HeaderContainer>
   );
 };
