@@ -1,6 +1,5 @@
 import App from "next/app";
 import "@/style.css";
-
 import React from "react";
 import { LayoutContainer } from "@/containers/Layout";
 

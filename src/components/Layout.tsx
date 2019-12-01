@@ -3,6 +3,8 @@ import SearchPanel from "./SearchPanel";
 import { LayoutContainer } from "@/containers/Layout";
 import { useEffect } from "react";
 import hotkeys from "hotkeys-js";
+import styled from "styled-components";
+import theme from "@/theme";
 
 function useSearchPanelListener() {
   const layout = LayoutContainer.useContainer();
@@ -21,15 +23,24 @@ function useSearchPanelListener() {
   });
 }
 
+const Container = styled.div`
+  @media (prefers-color-scheme: dark) {
+    background: #191b1f;
+  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
 const Layout: React.FunctionComponent = props => {
   const layout = LayoutContainer.useContainer();
   useSearchPanelListener();
   return (
-    <div>
+    <Container>
       <Header></Header>
       {layout.searchPanelVisible && <SearchPanel></SearchPanel>}
       {props.children}
-    </div>
+    </Container>
   );
 };
 

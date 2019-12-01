@@ -132,7 +132,8 @@ export default {
     none: "none"
   },
   fontFamily: {
-    title: `"Josefin Sans","DM Sans", -apple-system, Helvetica, "Noto Serif SC", "NSimSun", "STSong",
-    "Microsoft YaHei", sans-serif;`
+    title: `"Josefin Sans","DM Sans", -apple-system, Helvetica, "Helvetica Neue",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,
+    sans-serif;`
   }
 };
