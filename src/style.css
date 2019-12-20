@@ -1,6 +1,5 @@
 @import url("//fonts.googleapis.com/css?family=DM+Sans:300,400,500|Josefin+Sans:300i,400,400i&display=swap");
-@import url("//at.alicdn.com/t/font_1282065_x47wqm68y0l.css");
-@import url("//localhost:3001/font/css?family=Mi_Lan_Pro:400&display=swap&subset=Chinese_Simplify");
+@import url("//at.alicdn.com/t/font_1282065_4el3op3pqjh.css");
 
 * {
   box-sizing: border-box;
@@ -16,11 +15,9 @@ a {
 }
 
 html {
-  font-family: "Mi Lan Pro";
-
-  /* font-family: "DM Sans", -apple-system, Helvetica, "Helvetica Neue",
+  font-family: "DM Sans", -apple-system, Helvetica, "Helvetica Neue",
     "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,
-    sans-serif; */
+    sans-serif;
   font-size: 18px;
   font-weight: 400;
 }
