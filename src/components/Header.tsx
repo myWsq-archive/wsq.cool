@@ -33,11 +33,15 @@ const Logo = styled.h1`
   @media (max-width: ${theme.screens.sm}) {
     line-height: 1;
   }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 const NavContainer = styled.section`
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 7%;
 `;
 
 const HeaderContainer = styled.header``;
@@ -46,9 +50,9 @@ const HeaderComponent: React.FunctionComponent = () => {
   const layout = LayoutContainer.useContainer();
   return (
     <HeaderContainer>
-      <Link href="/">
-        <Logo>wsq.cool</Logo>
-      </Link>
+      <Logo>
+        <a href="/">wsq.cool</a>
+      </Logo>
       <NavContainer>
         <ActiveLink href="/">
           <StyledLink>Home</StyledLink>

@@ -1,11 +1,11 @@
-import { PostOrPage } from "@tryghost/content-api";
 import styled from "styled-components";
 import theme from "@/theme";
 import Dayjs from "dayjs";
 import Link from "next/link";
+import { DocListItem } from "@/services/post";
 
 export interface PostItemProp {
-  item: PostOrPage;
+  item: DocListItem;
 }
 
 interface CoverProp {
@@ -23,7 +23,7 @@ const PostItemContainer = styled.section`
 const Description = styled.p`
   color: ${theme.colors.gray[600]};
   line-height: 1.8;
-  margin: 0.5rem auto;
+  margin: 2rem auto;
   @media (prefers-color-scheme: dark) {
     color: rgba(255, 255, 255, 0.75);
   }
@@ -35,8 +35,9 @@ const Title = styled.h1`
   font-weight: bold;
   text-align: center;
   font-family: ${theme.fontFamily.title};
+  line-height: 1.5;
   color: ${theme.colors.gray[800]};
-  margin: 1.5em 0 1em 0;
+  margin: 0;
   @media (prefers-color-scheme: dark) {
     color: rgba(255, 255, 255, 0.9);
   }
@@ -138,35 +139,45 @@ const Cover: React.FunctionComponent<CoverProp> = props => {
   }
 };
 
+const FloatCover = styled.img`
+  float: right;
+  width: 250px;
+  margin-left: 1em;
+  border-radius: 2px;
+  box-shadow: ${theme.boxShadow.lg};
+  @media screen and (max-width: ${theme.screens.md}) {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 1em;
+  }
+`;
+
 const PostItem: React.FunctionComponent<PostItemProp> = props => {
   return (
     <PostItemContainer>
-      <Link href="/post/[slug]" as={`/post/${props.item.slug}`}>
+      <a href={`/post/${props.item.slug}`}>
         <div style={{ cursor: "pointer" }}>
-          <Cover
-            imageUrl={props.item.feature_image}
-            title={props.item.title}
-          ></Cover>
+          <Title>{props.item.title}</Title>
           <HiddenTitle>{props.item.title}</HiddenTitle>
           <InfoContainer>
             <SubTitle>
-              {Dayjs(props.item.updated_at).format("YYYY-MM-DD hh:mm:ss")}
+              {Dayjs(props.item.published_at).format("YYYY-MM-DD hh:mm:ss")}
             </SubTitle>
             <Spliter></Spliter>
             <SubTitle>
-              {
-                // @ts-ignore
-                props.item.reading_time
-              }
-              &nbsp;reading
+              {props.item.word_count}
+              &nbsp;words
             </SubTitle>
           </InfoContainer>
           <Description>
-            {props.item.custom_excerpt || props.item.excerpt}
+            {props.item.cover && (
+              <FloatCover src={props.item.cover}></FloatCover>
+            )}
+            {props.item.custom_description || props.item.description}
           </Description>
         </div>
-      </Link>
-      {!!props.item.tags.length && (
+      </a>
+      {/* {!!props.item.tags.length && (
         <InfoContainer>
           <i
             className="iconfont icon-tag"
@@ -181,7 +192,7 @@ const PostItem: React.FunctionComponent<PostItemProp> = props => {
             <LinkSpliter key={tag.slug + ","}>,</LinkSpliter>
           ])}
         </InfoContainer>
-      )}
+      )} */}
     </PostItemContainer>
   );
 };

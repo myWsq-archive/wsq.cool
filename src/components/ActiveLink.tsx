@@ -1,6 +1,6 @@
 import { Children, cloneElement } from "react";
 import { useRouter } from "next/router";
-import Link, { LinkProps } from "next/link";
+import { LinkProps } from "next/link";
 
 const ActiveLink: React.FunctionComponent<LinkProps> = props => {
   const router = useRouter();
@@ -14,7 +14,7 @@ const ActiveLink: React.FunctionComponent<LinkProps> = props => {
   }
 
   // @ts-ignore
-  return <Link {...props}>{cloneElement(child, { className })}</Link>;
+  return <span>{cloneElement(child, { className, href: props.href })}</span>;
 };
 
 export default ActiveLink;

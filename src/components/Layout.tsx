@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import hotkeys from "hotkeys-js";
 import styled from "styled-components";
 import theme from "@/theme";
+import Head from "next/head";
 
 function useSearchPanelListener() {
   const layout = LayoutContainer.useContainer();
@@ -37,6 +38,9 @@ const Layout: React.FunctionComponent = props => {
   useSearchPanelListener();
   return (
     <Container>
+      <Head>
+        <meta name="referrer" content="no-referrer" />
+      </Head>
       <Header></Header>
       {layout.searchPanelVisible && <SearchPanel></SearchPanel>}
       {props.children}
