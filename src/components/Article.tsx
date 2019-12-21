@@ -8,6 +8,7 @@ export interface ArticleProp {
 }
 
 const ArticleContainer = styled.article`
+  max-width: 100%;
   @media (prefers-color-scheme: dark) {
     color: rgba(255, 255, 255, 0.75);
   }
@@ -24,10 +25,11 @@ const ArticleContainer = styled.article`
   h3,
   h4,
   h5 {
-    color: ${theme.colors.gray[900]};
+    color: ${theme.colors.gray[800]};
     @media (prefers-color-scheme: dark) {
       color: rgba(255, 255, 255, 0.85);
     }
+    font-family: ${theme.fontFamily.title};
   }
 
   line-height: 1.8;
@@ -36,6 +38,11 @@ const ArticleContainer = styled.article`
   } */
   & > * {
     margin: 1.1em auto;
+  }
+
+  h1 {
+    margin-top: 0;
+    font-size: 2.5em;
   }
 
   h2 {
@@ -65,8 +72,8 @@ const ArticleContainer = styled.article`
   }
 
   p {
-    font-size: 1rem !important;
-    line-height: 1.8 !important;
+    font-size: 1rem;
+    line-height: 1.8;
   }
 
   img {
@@ -83,6 +90,23 @@ const ArticleContainer = styled.article`
     &:hover {
       color: ${theme.colors.teal[400]};
     }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table,
+  th,
+  td {
+    border: 1px solid ${theme.colors.gray[400]};
+    @media (prefers-color-scheme: dark) {
+      border: 1px solid ${theme.colors.gray[700]};
+    }
+  }
+  th,
+  td {
+    padding: 1em;
   }
 `;
 

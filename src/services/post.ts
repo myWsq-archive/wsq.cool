@@ -27,9 +27,58 @@ export interface DocListItem {
   _serializer: string;
 }
 
+export interface SearchDocItem {
+  id: string;
+  type: string;
+  abstract: string;
+  title: string;
+  slug: string;
+  url: string;
+  book_name?: string;
+  group_name?: string;
+}
+
+export interface DocDetail {
+  id: number;
+  space_id: number;
+  type: string;
+  format: string;
+  title: string;
+  slug: string;
+  public: number;
+  status: number;
+  read_status: number;
+  created_at: Date;
+  content_updated_at: Date;
+  published_at: Date;
+  first_published_at: Date;
+  sourcecode: string;
+  last_editor: null;
+  _serializer: string;
+}
+
 export async function getPosts(): Promise<DocListItem[]> {
   const { data } = await YuqueAxiosClient.get(
-    `https://www.yuque.com/api/v2/repos/wangshuaiqi/wsq.cool/docs`
+    "https://yuque.com/api/v2/repos/wangshuaiqi/wsq.cool/docs"
   );
   return data.data.filter(item => item.status && item.public);
+}
+
+export async function searchDocs(q: string): Promise<SearchDocItem[]> {
+  const { data } = await YuqueAxiosClient.get("/api/zsearch", {
+    params: {
+      p: 1,
+      q,
+      scope: `282173/wsq.cool`,
+      type: "doc"
+    }
+  });
+  return data.data.hits;
+}
+
+export async function getDocDetail(slug: string): Promise<DocDetail> {
+  const { data } = await YuqueAxiosClient.get(
+    `https://www.yuque.com/api/docs/${slug}?book_id=272956&mode=markdown`
+  );
+  return data.data;
 }
