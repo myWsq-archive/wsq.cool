@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 8080",
     "export": "next build && next export",
     "lint": "eslint src --ext .ts,.tsx,.js,.jsx --fix"
   },
