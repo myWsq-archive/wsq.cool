@@ -76,9 +76,13 @@ export async function searchDocs(q: string): Promise<SearchDocItem[]> {
   return data.data.hits;
 }
 
-export async function getDocDetail(slug: string): Promise<DocDetail> {
+export async function getDocDetail(
+  slug: string,
+  bookId: number,
+  mode: string = "markdown"
+): Promise<DocDetail> {
   const { data } = await YuqueAxiosClient.get(
-    `https://www.yuque.com/api/docs/${slug}?book_id=272956&mode=markdown`
+    `https://www.yuque.com/api/docs/${slug}?book_id=${bookId}&mode=${mode}`
   );
   return data.data;
 }

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { createContainer } from "unstated-next";
 import * as bodyScrollLock from "body-scroll-lock";
+import { Auth } from "@/services/auth";
 
 function useLayout() {
   const [searchPanelVisible, setSearchPanelVisibleOrigin] = useState(false);
+  const [auth, setAuth] = useState<Auth | null>(null);
   function setSearchPanelVisible(value: boolean) {
     if (value) {
       bodyScrollLock.disableBodyScroll(document.body);
@@ -14,7 +16,9 @@ function useLayout() {
   }
   return {
     searchPanelVisible,
-    setSearchPanelVisible
+    setSearchPanelVisible,
+    auth,
+    setAuth
   };
 }
 

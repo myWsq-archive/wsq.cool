@@ -33,7 +33,7 @@ const PostSlug: NextPage<IndexInitialProp> = props => {
 
 PostSlug.getInitialProps = async ctx => {
   const slug = ctx.query.slug as string;
-  const post = await getDocDetail(slug);
+  const post = await getDocDetail(slug, 272956);
   const markdown = new md({
     html: true
   });

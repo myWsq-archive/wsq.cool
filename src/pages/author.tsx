@@ -1,28 +1,45 @@
+import { NextPage } from "next";
+import { getDocDetail, DocDetail } from "@/services/post";
 import Layout from "@/components/Layout";
+import Head from "next/head";
+import md from "markdown-it";
+import Article from "@/components/Article";
 import styled from "styled-components";
-import theme from "@/theme";
 
-const Span = styled.p`
-  font-size: 1.2em;
-  text-align: center;
-  color: ${theme.colors.gray[800]};
-  margin-top: 100px;
+export interface IndexInitialProp {
+  post: DocDetail;
+}
+
+const ArticleContainer = styled.div`
+  max-width: 100%;
+  width: 816px;
+  padding: 1rem;
+  margin: 0 auto;
 `;
 
-const About: React.FunctionComponent = () => {
+const Author: NextPage<IndexInitialProp> = props => {
+  const { post } = props;
   return (
     <Layout>
-      <Span>
-        <figure>
-          <img
-            src="https://ipic-1253962968.cos.ap-beijing.myqcloud.com/2019-11-27-%E4%B8%8B%E8%BD%BD.jpeg"
-            width="400"
-          ></img>
-        </figure>
-        This is an about page.
-      </Span>
+      <Head>
+        <title>{post.title} - wsq.cool</title>
+      </Head>
+      <ArticleContainer>
+        <Article content={post.sourcecode}></Article>
+      </ArticleContainer>
     </Layout>
   );
 };
 
-export default About;
+Author.getInitialProps = async ctx => {
+  const post = await getDocDetail("author", 644307);
+  const markdown = new md({
+    html: true
+  });
+  post.sourcecode = markdown.render(post.sourcecode);
+  return {
+    post
+  };
+};
+
+export default Author;
