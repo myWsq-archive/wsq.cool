@@ -1,7 +1,6 @@
-import prism from "prismjs";
-import { useEffect } from "react";
 import styled from "styled-components";
 import theme from "@/theme";
+import { useEffect } from "react";
 
 export interface ArticleProp {
   content: string;
@@ -111,9 +110,6 @@ const ArticleContainer = styled.article`
 `;
 
 const Article: React.FunctionComponent<ArticleProp> = props => {
-  useEffect(() => {
-    prism.highlightAll();
-  }, [props.content]);
   return (
     <ArticleContainer
       dangerouslySetInnerHTML={{ __html: props.content }}

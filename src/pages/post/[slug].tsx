@@ -2,10 +2,9 @@ import { NextPage } from "next";
 import { getDocDetail, DocDetail } from "@/services/post";
 import Layout from "@/components/Layout";
 import Head from "next/head";
-import md from "markdown-it";
 import Article from "@/components/Article";
 import styled from "styled-components";
-
+import { renderMarkdown } from "@/utils";
 export interface IndexInitialProp {
   post: DocDetail;
 }
@@ -34,10 +33,7 @@ const PostSlug: NextPage<IndexInitialProp> = props => {
 PostSlug.getInitialProps = async ctx => {
   const slug = ctx.query.slug as string;
   const post = await getDocDetail(slug, 272956);
-  const markdown = new md({
-    html: true
-  });
-  post.sourcecode = markdown.render(post.sourcecode);
+  post.sourcecode = renderMarkdown(post.sourcecode);
   return {
     post
   };

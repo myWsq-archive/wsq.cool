@@ -1,7 +1,25 @@
-import GhostContentAPI from "@tryghost/content-api";
+import MarkdownIt from "markdown-it";
 
-export const CMS = GhostContentAPI({
-  url: "http://ymzstudio.com:2368",
-  key: "208f1d2e47e91068f6b8cf1d32",
-  version: "v3"
-});
+export function renderMarkdown(text: string) {
+  const Prismjs = require("prismjs");
+  const loadLanguages = require("prismjs/components/");
+  const md = new MarkdownIt({
+    html: true,
+    highlight: (str, lang) => {
+      if (!Prismjs.languages[lang]) {
+        loadLanguages([lang]);
+      }
+      return (
+        `<pre class="language-${lang}">` +
+        `<label data-clipboard-action="copy" class="language">${lang}</label>` +
+        `<code>${Prismjs.highlight(
+          str,
+          Prismjs.languages[lang],
+          lang
+        )}</code></pre>`
+      );
+    }
+  });
+
+  return md.render(text);
+}
