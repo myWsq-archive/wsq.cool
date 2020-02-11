@@ -55,7 +55,7 @@ const HeaderComponent: React.FunctionComponent = () => {
     <HeaderContainer>
       <Logo>
         <a href="/">
-          <img src="https://internal-api-space-lf.feishu.cn/space/api/box/stream/download/preview/boxcnH21PShAVwjdv1BeEJdfFbe?preview_type=12&version=6792113189837342472"></img>
+          <img src="https://ipic-1253962968.cos.ap-beijing.myqcloud.com/2020-02-11-PNG%E5%9B%BE%E5%83%8F-BDAFD91BA796-1%20-2-.png"></img>
         </a>
       </Logo>
       <NavContainer>
