@@ -19,20 +19,23 @@ const StyledLink = styled.a`
   }
 `;
 
-const Logo = styled.h1`
-  color: ${theme.colors.gray[800]};
-  @media (prefers-color-scheme: dark) {
-    color: rgba(255, 255, 255, 0.9);
+const Logo = styled.div`
+  img {
+    width: 420px;
   }
-  font-family: ${theme.fontFamily.title};
+  @media (prefers-color-scheme: dark) {
+    img {
+      filter: invert(1);
+    }
+  }
+  @media (max-width: ${theme.screens.sm}) {
+    img {
+      width: 80%;
+    }
+  }
   text-align: center;
   cursor: pointer;
-  line-height: 1.5;
-  margin: 0.6em 0;
-  font-size: 4em;
-  @media (max-width: ${theme.screens.sm}) {
-    line-height: 1;
-  }
+  margin: 2em 0;
   a {
     color: inherit;
     text-decoration: none;
@@ -51,7 +54,9 @@ const HeaderComponent: React.FunctionComponent = () => {
   return (
     <HeaderContainer>
       <Logo>
-        <a href="/">wsq.cool</a>
+        <a href="/">
+          <img src="https://internal-api-space-lf.feishu.cn/space/api/box/stream/download/preview/boxcnH21PShAVwjdv1BeEJdfFbe?preview_type=12&version=6792113189837342472"></img>
+        </a>
       </Logo>
       <NavContainer>
         <ActiveLink href="/">
