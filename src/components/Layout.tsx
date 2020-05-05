@@ -32,7 +32,7 @@ function useAuthInfo() {
     getAuthInfo().then(auth => {
       layout.setAuth(auth);
     });
-  }, []);
+  }, [layout]);
 }
 
 const Footer = styled.footer`
