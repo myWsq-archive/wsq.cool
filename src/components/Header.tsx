@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import theme from "@/theme";
 import ActiveLink from "./ActiveLink";
-import Link from "next/link";
 import { LayoutContainer } from "@/containers/Layout";
 
 const StyledLink = styled.a`

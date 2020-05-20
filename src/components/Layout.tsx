@@ -23,7 +23,7 @@ function useSearchPanelListener() {
         layout.setSearchPanelVisible(false);
       }
     });
-  });
+  }, []);
 }
 
 function useAuthInfo() {
@@ -32,7 +32,7 @@ function useAuthInfo() {
     getAuthInfo().then(auth => {
       layout.setAuth(auth);
     });
-  }, [layout]);
+  }, []);
 }
 
 const Footer = styled.footer`
@@ -79,11 +79,7 @@ const Layout: React.FunctionComponent = props => {
         <meta name="referrer" content="no-referrer" />
         {layout.auth ? (
           [
-            <link
-              rel="icon"
-              href={layout.auth.small_avatar_url}
-              key="favicon"
-            />,
+            <link rel="icon" href={layout.auth.avatar_url} key="favicon" />,
             <title key="title">{layout.auth.name} - wsq.cool</title>
           ]
         ) : (
