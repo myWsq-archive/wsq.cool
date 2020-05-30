@@ -85,9 +85,9 @@ const ArticleContainer = styled.article`
     line-height: 1.8;
   }
   a {
-    color: inherit;
+    color: ${theme.colors.teal[400]};
     &:hover {
-      color: ${theme.colors.teal[400]};
+      text-decoration: underline;
     }
   }
 
@@ -109,7 +109,7 @@ const ArticleContainer = styled.article`
   }
 `;
 
-const Article: React.FunctionComponent<ArticleProp> = props => {
+const Article: React.FunctionComponent<ArticleProp> = (props) => {
   return (
     <ArticleContainer
       dangerouslySetInnerHTML={{ __html: props.content }}
