@@ -20,7 +20,7 @@ const StyledLink = styled.a`
 
 const Logo = styled.div`
   img {
-    width: 420px;
+    width: 320px;
   }
   @media (prefers-color-scheme: dark) {
     img {
@@ -34,7 +34,7 @@ const Logo = styled.div`
   }
   text-align: center;
   cursor: pointer;
-  margin: 2em 0;
+  margin: 5em 0 3rem;
   a {
     color: inherit;
     text-decoration: none;
@@ -54,7 +54,7 @@ const HeaderComponent: React.FunctionComponent = () => {
     <HeaderContainer>
       <Logo>
         <a href="/">
-          <img src="https://ipic-1253962968.cos.ap-beijing.myqcloud.com/2020-02-11-PNG%E5%9B%BE%E5%83%8F-BDAFD91BA796-1%20-2-.png"></img>
+          <img src="https://ipic-1253962968.cos.ap-beijing.myqcloud.com/uPic/wsq.cool.svg"></img>
         </a>
       </Logo>
       <NavContainer>
